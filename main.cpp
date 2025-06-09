@@ -103,7 +103,7 @@ void display_book_vector(vector <Book> &b)
     for (int i = 0; i < b.size(); i++)
     {
         cout << "Book #: " << i + 1 << endl;
-        b[i].view();
+        b[i].viewBookInfo();
     }
 }
 
@@ -129,7 +129,7 @@ void menu()
 void add_customer()
 {
     //Makes default book for customer
-    Book default_book;
+    //Book default_book;
     //User defines a bunch of stuff about the customer
     cout << "----------Add Customer----------" << endl;
     string customer_name, customer_address, customer_date_check_out;
@@ -140,8 +140,9 @@ void add_customer()
     getline(cin, customer_address);
     cout << "Date Checked Out: ";
     getline(cin, customer_date_check_out);
+    Book empty_book("N/A", "N/A", false, 0.0f, 0);
     //Creates a temp customer based off of data entered, pushes it in vector
-    Customer temp_customer(0, customer_name, customer_address, "N/A", default_book);
+    Customer temp_customer(customer_name, customer_address, time(0), empty_book);
     custvector.push_back(temp_customer);
     cout << "Customer added!" << endl;
 
@@ -185,7 +186,7 @@ void add_book()
     cin >> book_cost;
 
     //Make a temp book with information user entered and add it to a book vector
-    Book temp_book(book_title, book_author, 0, false, book_cost, book_pages);
+    Book temp_book(book_title, book_author, false, book_cost, book_pages);
     bookvector.push_back(temp_book);
     cout << "Book added!" << endl;
 }
@@ -230,7 +231,7 @@ void book_check_out()
     cin >> book;
     //Vectors make things so nice and easy with objects and methods
     //Calls .checkout() for the book that's in the vector
-    bookvector[book-1].checkout();
+    bookvector[book-1].checkoutBook();
     cout << "Book checked out!" << endl;
 }
 
@@ -241,6 +242,6 @@ void book_check_in()
     int book;
     cout << "What book number would you like to check in?: " << endl;
     cin >> book;
-    bookvector[book-1].checkin();
+    bookvector[book-1].checkinBook();
     cout << "Book checked in!" << endl;
 }

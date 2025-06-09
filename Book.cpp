@@ -6,19 +6,21 @@
 #include <iostream>
 using namespace std;
 
+
+
 //Constructor
-Book::Book(string book_title, string book_author, int book_ID, bool book_checked_out, double book_cost, int book_total_pages)
+Book::Book(string book_title, string book_author, bool book_checked_out, float book_cost, int book_total_pages)
 {
     title = book_title;
     author = book_author;
-    ID = generate_id();
+    ID = Book::generateBookId();
     checked_out = book_checked_out;
     cost = book_cost;
     total_pages = book_total_pages;
 }
 
 //Generates random number with 5/6 digits for ID
-int Book::generate_id()
+int Book::generateBookId()
 {
     int random_ID = (rand() % (999999 - 99999 + 1)) + 99999;
     return random_ID;
@@ -26,20 +28,20 @@ int Book::generate_id()
 
 //Checkout and checkin methods
 //Sets checked_out to either true or false
-bool Book::checkout()
+bool Book::checkoutBook()
 {
     checked_out = true;
     return checked_out;
 }
 
-bool Book::checkin()
+bool Book::checkinBook()
 {
     checked_out = false;
     return checked_out;
 }
 
 //View function to list all details of book
-void Book::view()
+void Book::viewBookInfo()
 {
     cout << "----------------------------------------" << endl;
     cout << "Book Information: " << endl;
