@@ -9,15 +9,15 @@ using namespace std;
 
 
 //Constructor
-Book::Book(string book_title, string book_author, bool book_checked_out, float book_cost, int book_total_pages)
-{
-    title = book_title;
-    author = book_author;
-    ID = Book::generateBookId();
-    checked_out = book_checked_out;
-    cost = book_cost;
-    total_pages = book_total_pages;
-}
+Book::Book(std::string title, std::string author, bool checked_out, float cost, int pages)
+    : title(title), 
+    author(author), 
+    ID(generate_guid()), 
+    checked_out(checked_out), 
+    cost(cost), 
+    total_pages(pages) 
+    {}
+
 
 //Generates random number with 5/6 digits for ID
 int Book::generateBookId()

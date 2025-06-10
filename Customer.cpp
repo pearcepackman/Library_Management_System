@@ -9,7 +9,7 @@ using namespace std;
 
 //Creates the constructor with stuff
 Customer::Customer(string customer_name, string customer_address, time_t customer_date_check_out, Book customer_book)
-    : ID(generate_id()),
+    : ID(generate_guid()),
       name(customer_name),
       address(customer_address),
       date_check_out(customer_date_check_out),
@@ -25,7 +25,7 @@ int Customer::generate_id()
 }
 
 //Checkout function finds the current time of the system, then sets customer date check out to that value, also returns it
-string Customer::checkout()
+string Customer::checkoutTime()
 {
     book.checkoutBook();
     time_t now = time(0);
@@ -34,7 +34,7 @@ string Customer::checkout()
 }
 
 //Checkin() will set the customers book to the default book, also date_checked_out = N/A to show customer info
-string Customer::checkin()
+string Customer::checkinTime()
 {
     book = Book("N/A", "N/A", false, 0.00, 0);
     time_t now = time(0);
@@ -43,7 +43,7 @@ string Customer::checkin()
 }
 
 //View with all the information about customer
-void Customer::view()
+void Customer::viewCustomer()
 {
     cout << "----------------------------------------" << endl;
     cout << "Customer Information: " << endl;
@@ -51,7 +51,7 @@ void Customer::view()
     cout << "Name: " << name << endl;
     cout << "ID: " << ID << endl;
     cout << "Address: " << address << endl;
-    cout << "Date Checked Out: " << date_check_out << endl;
+    cout << "Date Checked Out: " << ctime(&date_check_out) << endl;
     cout << "Book Title: " << book.get_title() << endl;
     cout << "----------------------------------------" << endl;
 }

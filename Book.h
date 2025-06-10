@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include "utils.h"
 using namespace std;
 
 //Creating class book
@@ -10,7 +11,7 @@ class Book
 {
 private:
     //Making the private attributes of Book Class
-    int ID;
+    string ID;
     int total_pages;
     float cost;
     bool checked_out;
@@ -40,7 +41,7 @@ public:
         checked_out = b.checked_out;
         title = b.title;
         author = b.author;
-        ID = Book::generateBookId();
+        ID = generate_guid();
     }
 
     //Destructor, not creating anything new on the heap, not used yet, good to have
@@ -53,7 +54,7 @@ public:
 
     const string& get_author() const {return author;}
 
-    int get_id() const {return ID;}
+    const string& get_id() const {return ID;}
 
     bool get_checked_out() const {return checked_out;}
 

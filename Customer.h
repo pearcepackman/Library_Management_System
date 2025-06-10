@@ -4,14 +4,16 @@
 
 #include <iostream>
 #include "Book.h"
+#include "utils.h"
 using namespace std;
 
 class Customer
 {
 private:
     //Private attributes of Customer class
-    int ID;
-    string name, address; 
+    string ID;
+    string name; 
+    string address; 
     time_t date_check_out;
     Book book;
 
@@ -31,7 +33,7 @@ public:
     }
         */
 
-    //THIS SAVED MY PROJECT!!!!
+    
     Customer(const Customer& c)
         : ID(c.ID),
         name(c.name),
@@ -48,20 +50,20 @@ public:
     }
 
     //Getters
-    int get_ID() {return ID;}
+    const string& get_ID() const {return ID;}
 
-    string get_name() {return name;}
+    const string& get_name() const {return name;}
 
-    string get_address() {return address;}
+    const string& get_address() const {return address;}
 
-    time_t get_date_check_out() {return date_check_out;}
+    time_t get_date_check_out() const {return date_check_out;}
 
-    Book get_book() {return book;}
+    Book get_book() const {return book;}
 
     //Methods going in the Customer.cpp
-    void view();
-    string checkout();
-    string checkin();
+    void viewCustomer();
+    string checkoutTime();
+    string checkinTime();
     int generate_id();
 
 };

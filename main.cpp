@@ -93,7 +93,7 @@ void display_cust_vector(vector <Customer> &c)
     for (int i = 0; i < c.size(); i++)
     {
         cout << "Customer #: " << i + 1 << endl;
-        c[i].view();
+        c[i].viewCustomer();
     }
 }
 
@@ -138,8 +138,8 @@ void add_customer()
     getline(cin, customer_name);
     cout << "Customer address: ";
     getline(cin, customer_address);
-    cout << "Date Checked Out: ";
-    getline(cin, customer_date_check_out);
+    //cout << "Date Checked Out: ";
+    //getline(cin, customer_date_check_out);
     Book empty_book("N/A", "N/A", false, 0.0f, 0);
     //Creates a temp customer based off of data entered, pushes it in vector
     Customer temp_customer(customer_name, customer_address, time(0), empty_book);
